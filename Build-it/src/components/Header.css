@@ -1,0 +1,109 @@
+
+    @font-face {
+      font-family: inter;
+      src: url(../Fonts/Inter-Regular.ttf);
+    }
+    body{
+      font-family: 'inter';
+    }
+    .header-container{
+      position: static ;
+      top: 0px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .topnavbar
+    {
+      z-index: 1;
+      width: 100%;
+      padding: 10px;
+      list-style-type: none;
+      display: flex;
+      justify-content:space-between;
+      background-color: #FAF9F6;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      align-items:normal;
+    }
+    .Logo-container {
+      border-radius: 100%;
+      background-color: #F9B5B5;
+      overflow: hidden;
+      align-items: center;
+    }
+    
+    .Logo-container img {
+      object-fit: cover;
+      align-self: center;
+      max-width: 100%;
+      max-height: 100%;
+    }
+    
+
+    .topnavbar a {
+      color: black;
+      padding: 16px;
+      font-size: 22px;
+      text-decoration: none;
+      
+    }
+    .top-nav-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center; 
+      margin-right: 10px;
+      padding-right: 20px;
+      gap: 50px;
+    }
+      
+    .main-nav{
+    
+    margin-top:40px;
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+
+    }
+    .main-nav-content{
+      font-family: 'inter';
+      list-style-type: none;
+      display: flex;
+      transform: translateX(110px);
+      gap: 70px;
+      justify-content:space-around;
+    }
+    
+    .topnavbar a
+    {
+      color: black;
+      font-size: 22px;
+      padding: 16px;
+      text-decoration: none;
+    }
+    .main-nav-content a{
+      
+      color: black;
+      font-size: 20px;
+      margin: 10px;
+      text-decoration: none;
+    }
+    .topnavbar a:hover {
+      background-color: #FFF0CA;
+      border-radius: 20px;
+    }
+    .main-nav a:hover{
+      background-color: #FFF0CA;
+      border-radius: 5px;
+    }
+    
+    .main-nav a:active {
+      background-color: #FFF0CA;
+    }
+
+    .hlinking{
+      text-decoration: none;
+      overflow: hidden;
+      border-radius: 100%;
+    }
+    

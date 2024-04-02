@@ -1,0 +1,42 @@
+/* Container for the search bar */
+.searchbar-container {
+    width: 530px;
+    height: 50px;
+}
+
+/* Form positioning */
+.searchbar-form {
+    position: relative;
+}
+
+/* Styling for the search input */
+.searchbar-input {
+    background-color: #efeff1;
+    border: none;
+    border-radius: 100px;
+    outline: none;
+    font-size: 22px;
+    padding-left: 25px;
+    width: 540px; 
+    height: 50px;
+}
+
+.searchbar-input::placeholder {
+    text-align: left;
+    padding-top: 10px;
+    color: black;
+    font-size: 22px;
+    
+}
+/* Styling for the search button */
+.searchbar-button {
+    position: absolute;
+    color: black;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    left: 80%; 
+    top: 50%;
+    transform: translate(50%, -50%);
+}

@@ -1,0 +1,28 @@
+.item-container{
+    margin-left: 50px;
+    display: flex;
+    width: 800px;
+    height: 170px;
+    align-items: center;
+    justify-content: space-around;
+    background: #F5F5F5;
+    border-radius: 30px;
+    padding: 5px;
+    border:1px solid #d6d6d6;
+}
+
+.Qty-container{
+    display: flex;
+    width: 150px;
+    justify-content: space-around;
+    margin:0px 5px 0px 5px;
+}
+button{
+    color: black;
+    border: none ;
+    background-color: transparent;
+}
+li{
+    list-style: none;
+    padding: 10px;
+}
