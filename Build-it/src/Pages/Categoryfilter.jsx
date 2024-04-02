@@ -14,7 +14,8 @@ export default function categorypage(){
         category:"processors",
         name:"Laptop",
         price:1000,
-        image:""
+        image:"",
+        link:"/products/:category/1"
     },
     {id:2, category:"rams",name: "chaissakd",price:1000, image:""}
     ];
