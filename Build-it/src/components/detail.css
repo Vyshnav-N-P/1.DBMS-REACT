@@ -1,0 +1,80 @@
+@font-face {
+    font-family: inter;
+    src: url(../Fonts/Inter-Regular.ttf);
+}
+
+.Maincontainer{
+    display: flex;
+    justify-content: left;
+}
+
+.imagecontainer{
+    display: flex;
+    width: 541px;
+    height: 595px;
+    padding: 131px 105px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    margin-right: 15%;
+}
+h1{
+    color: #000;
+    font-family: inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-align: center;
+}
+.pricecontainer{
+    display: flex;
+    
+    justify-content: space-around;
+    align-items: center;
+}
+.fprice{
+    color: grey;
+font-family: inter;
+font-size: 28px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+text-decoration:line-through;
+margin-right: 20px;
+}
+
+.oprice{
+    color: #000;
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.Qtycontainer{
+    display:flex;
+    justify-content: space-around;
+    border: black 1px solid;
+}
+
+.sub  {
+    border-right : black 1px solid;
+}
+.add{
+    border-left: black 1px solid;
+}
+
+#tocart{
+    background-color: #4A4A4A;
+    color: #FFF;
+    font-family: inter;
+    font-size: 31px;
+    font-weight: 400;
+    border-radius: 15px;
+}

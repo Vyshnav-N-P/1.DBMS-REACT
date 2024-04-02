@@ -8,6 +8,7 @@ import { Route,Routes } from 'react-router-dom';
 import Productpage from './Pages/Products';
 import Cart from './Pages/Cart';
 import Category from './Pages/Category';
+import Detail from './Pages/Detail';
 
 export default function App(){
   return (
@@ -19,6 +20,7 @@ export default function App(){
       <Route path='/register-page' element={<Registerpage />}/>
       <Route path='/cart-page' element={<Cart />}/>
       <Route path='/products/:category' element={<Category />}/>
+      <Route path='/products/:category/:name' element={<Detail />}/>
       <Route path='*' element={<NotFound />}/>
     </Routes>
   )
