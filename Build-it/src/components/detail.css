@@ -56,25 +56,41 @@ margin-right: 20px;
     line-height: normal;
 
 }
+.Cartfuntions{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
 .Qtycontainer{
     display:flex;
     justify-content: space-around;
     border: black 1px solid;
+    width:155px;
+    height: 60px;
+    font-size: 30px;
+    align-items: center;
+    border-radius: 12px;
 }
 
 .sub  {
     border-right : black 1px solid;
+    font-size: 30px;
 }
 .add{
     border-left: black 1px solid;
+    font-size: 30px;
 }
 
 #tocart{
     background-color: #4A4A4A;
+    position: relative;
+    left: 50px;
     color: #FFF;
     font-family: inter;
     font-size: 31px;
     font-weight: 400;
     border-radius: 15px;
+    width: 300px;
+    height: 60px;
 }

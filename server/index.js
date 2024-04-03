@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 //Routes
 
 //login
+
 app.post("/Login-page", async(req,res)=>{
     try {
         const { username, password } = req.body;
@@ -43,6 +44,7 @@ app.post("/Login-page", async(req,res)=>{
 });
 
 //register 
+
 app.post("/Register-page", async(req,res)=>{
     try{
         const {username,password,email} =req.body;
@@ -62,6 +64,24 @@ app.post("/Register-page", async(req,res)=>{
         res.status(500).send("Error registering user");
     }
 });
+
+//Add to cart
+
+app.post('/products/category/:id', async (req, res) => {
+    const id = req.params.id;
+    const qty=req.body;
+    console.log(req.body);
+
+    const product= await pool.query("SELECT * FROM products WHERE id = $1",[id]);
+    if (product.rows.length === 0) {
+        res.status(404).json({message:"Product not found"});
+    }
+    else{
+        await pool.query("insert into cart(productid,qty) values($1,$2)",[id,qty]);
+        res.status(200).json({ message: "Product added to cart successfully" });
+    }
+});
+
 app.listen(5000,()=>{
     console.log("Server runnning on port 5000");
 })

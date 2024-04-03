@@ -15,9 +15,9 @@ export default function categorypage(){
         name:"Laptop",
         price:1000,
         image:"",
-        link:"/products/:category/1"
+        link:`/products/${category}/1`
     },
-    {id:2, category:"rams",name: "chaissakd",price:1000, image:""}
+    {id:2, category:"rams",name: "chaissakd",price:1000, image:"",link:`/products/${category}/2`}
     ];
 
 
