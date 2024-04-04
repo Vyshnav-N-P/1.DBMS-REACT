@@ -76,11 +76,26 @@ app.post('/products/category/:id', async (req, res) => {
     if (product.rows.length === 0) {
         res.status(404).json({message:"Product not found"});
     }
-    else{
-        await pool.query("insert into cart(productid,qty) values($1,$2)",[id,qty]);
-        res.status(200).json({ message: "Product added to cart successfully" });
+    
+    await pool.query("insert into cart(productid,qty) values($1,$2)",[id,qty]);
+    res.status(200).json({ message: "Product added to cart successfully" });
+    
+});
+
+//Loading Products 
+app.get('/products/:category',async (req,res)=>{
+    try {
+        const products= await pool.query("SELECT * FROM products");
+        
+        res.status(200).json(products.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ message: "Internal Server Error" });
     }
 });
+
+//Load a Product
+app.get('/products/:category/:id')
 
 app.listen(5000,()=>{
     console.log("Server runnning on port 5000");

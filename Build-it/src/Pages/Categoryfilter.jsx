@@ -1,14 +1,30 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link , useParams }   from "react-router-dom";
 import Profile from "../components/Profile";
-
+import axios from "axios";
 
 export default function categorypage(){
-
+    const [productset, setProductset]=useState([]);
     const {category}=useParams();
-
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/products/:Category');
+                if (response.status === 200) {
+                    console.log(response.data);
+                    setProductset(response.data);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+    
+        fetchData();
+    }, []);
+    
+    
     let products=[{
         id:1,
         category:"processors",
@@ -32,7 +48,7 @@ export default function categorypage(){
                 </div>
                 <hr />
 
-                <Profile list={products.filter(product => product.category === category)}/>
+                <Profile list={productset.filter(product => product.category === category) }/>
             </div>
 
             <Footer />

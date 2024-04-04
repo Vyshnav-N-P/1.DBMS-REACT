@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
@@ -10,8 +10,23 @@ export default function ProductDetail(){
     const navigate=useNavigate();
     const [qty,setQty] = useState(1);
     const {id}=useParams();
+    const [product,setProduct] = useState();
     const {message,setMessage} = useState("");
-
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/products/category/${id}`);
+                if (response.status === 200) {
+                    console.log(response.data);
+                    setProduct(response.data);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+    
+        fetchData();
+    }, []);
     const handleSubmit = async ()=> {
         e.preventDefault();
         try {
