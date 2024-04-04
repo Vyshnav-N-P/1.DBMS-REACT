@@ -1,13 +1,15 @@
 import React,{useEffect,useState} from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Link , useParams }   from "react-router-dom";
+import { Link , useParams, useLocation }   from "react-router-dom";
 import Profile from "../components/Profile";
 import axios from "axios";
 
 export default function categorypage(){
     const [productset, setProductset]=useState([]);
     const {category}=useParams();
+    const location = useLocation();
+    let {pathname}=location;
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -48,7 +50,7 @@ export default function categorypage(){
                 </div>
                 <hr />
 
-                <Profile list={productset.filter(product => product.category === category) }/>
+                <Profile list={productset.filter(product => product.category === category) } url={pathname} identifier='id'/>
             </div>
 
             <Footer />
