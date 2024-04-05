@@ -10,7 +10,7 @@ export default function ProductDetail(){
     const navigate=useNavigate();
     const [qty,setQty] = useState(1);
     const {id}=useParams();
-    const [product,setProduct] = useState();
+    const [product,setProduct] = useState([]);
     const {message,setMessage} = useState("");
     useEffect(() => {
         const fetchData = async () => {
@@ -24,11 +24,12 @@ export default function ProductDetail(){
                 console.error('Error fetching data:', error);
             }
         };
-    
+        console.log(product);
+        
         fetchData();
     }, []);
     const handleSubmit = async ()=> {
-        e.preventDefault();
+
         try {
             const response=await axios.post(`http://localhost:5000/products/category/${id}`,JSON.stringify(qty));
             if(response.status){
@@ -52,8 +53,8 @@ export default function ProductDetail(){
                 </div>
                 <div className="detailscontainer">
                     <div>
-                        <h1>NAME</h1>
-                        <div className="pricecontainer"><p className="fprice">240000</p><p className="oprice">25000</p></div>
+                        <h1>{product.name}</h1>
+                        <div className="pricecontainer"><p className="fprice">{product.price + 200}</p><p className="oprice">{product.price}</p></div>
                         
                     </div>
                     

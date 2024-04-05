@@ -10,11 +10,6 @@ app.use(express.json());
 
 app.use(bodyParser.json());
 
-// const users = [
-//     { username: 'user', password: 'pass' },
-//     { username: 'user2', password: 'password2' }
-// ];
-
 //Routes
 
 //login
@@ -67,9 +62,10 @@ app.post("/Register-page", async(req,res)=>{
 
 //Add to cart
 
-app.post('/products/category/:id', async (req, res) => {
+app.post('/products/:category/:id', async (req, res) => {
+   try {
     const id = req.params.id;
-    const qty=req.body;
+    const {qty}=req.body;
     console.log(req.body);
 
     const product= await pool.query("SELECT * FROM products WHERE id = $1",[id]);
@@ -77,21 +73,31 @@ app.post('/products/category/:id', async (req, res) => {
         res.status(404).json({message:"Product not found"});
     }
     
-    await pool.query("insert into cart(productid,qty) values($1,$2)",[id,qty]);
+    await pool.query("insert into cart(productid , qty) values($1,$2)",[id,qty]);
     res.status(200).json({ message: "Product added to cart successfully" });
-    
-});
-
-//loading Cart
-app.get('/cart-page', async (req, res) => {
-    try{
-        const cart=await pool.query("SELECT * FROM cart");
-        res.status(200).json(cart.rows);
     }
     catch(err){
         res.status(500).json({ message: "Internal Server Error" });
     };
 });
+
+//loading Cart
+app.get('/cart-page', async (req, res) => {
+    try{
+        const cartitems=await pool.query("SELECT cart.qty,products.* FROM cart INNER JOIN products ON cart.productid = products.id");
+        if (cartitems.rows.length==0) {
+            res.status(404).json({message:"Cart is empty"});
+        };
+        console.log(cartitems.rows);
+        res.status(200).json(cartitems.rows);
+    }
+    catch(err){
+        res.status(500).json({ message: "Internal Server Error" });
+    };
+});
+
+//Loading Cart Items
+
 
 //Loading Products 
 app.get('/products/:category',async (req,res)=>{
@@ -106,7 +112,20 @@ app.get('/products/:category',async (req,res)=>{
 });
 
 //Load a Product
-app.get('/products/:category/:id')
+app.get('/products/:category/:id',async (req,res)=>{
+    try {
+        const id = req.params.id;
+        const product= await pool.query("SELECT * FROM products WHERE id = $1",[id]);
+        if (product.rows.length === 0) {
+            res.status(404).json({message:"Product not found"});
+        }
+        
+        res.status(200).json(product.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
 
 app.listen(5000,()=>{
     console.log("Server runnning on port 5000");

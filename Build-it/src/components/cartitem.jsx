@@ -4,7 +4,7 @@ import "../components/cartitem.css";
 export default function cartitem({product}){
     const [qty,setQty] = useState(1);
     const [price,setPrice] = useState(product.price);
-    
+
     useEffect(() =>{
         if(qty===1){
             setPrice(product.price);
