@@ -20,7 +20,9 @@ export default function App(){
       <Route path='/register-page' element={<Registerpage />}/>
       <Route path='/cart-page' element={<Cart />}/>
       <Route path='/products/:category' element={<Categoryfilter />}/>
+      <Route path='/brands/:brandname' element={<Categoryfilter />}/>
       <Route path='/products/:category/:id' element={<Detail />}/>
+      <Route path='/brands/:brandname/:id' element={<Detail />}/>
       <Route path='*' element={<NotFound />}/>
     </Routes>
   )

@@ -2,9 +2,25 @@ import React, { useEffect, useState } from "react";
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import CartItem from '../components/cartitem.jsx';
+import { Axios } from "axios";
 
 export default function Cart() {
     const [nitems, setNitems] = useState(0);
+    const [cartitems,setCart] = useState([]);
+    useEffect(() =>{
+        const fetchData =async () => {
+        try {
+            const response = await Axios.get('http://localhost:5000/cart-page');
+            if (response.status===200){
+                setCart(response.data);
+            }
+        }
+        catch (error) {
+            console.error('Error fetching data:', error);
+        };
+        fetchData();
+    }},[]);
+
     const items = [
         {
             id: 1,
@@ -18,9 +34,9 @@ export default function Cart() {
         }
     ];
 
-    let products=items.map(item => (<li key={item.id}><CartItem  product={item} /></li>));
+    let products=cartitems.map(item => (<li key={item.id}><CartItem  product={item} /></li>));
 
-        const totalItems = items.length;
+        const totalItems = cartitems.length;
 
         useEffect(() => {
             setNitems(totalItems);

@@ -1,0 +1,39 @@
+id,name,imageurl,price,brand,category
+3,Intel Core i9-11900K,no,15000,intel,processors
+4,AMD Ryzen 9 5950X,no,15000,amd,processors
+5,Intel Core i7-11700K,no,15000,intel,processors
+6,AMD Ryzen 7 5800X,no,15000,amd,processors
+7,Intel Core i5-11600K,no,15000,intel,processors
+8,AMD Ryzen 5 5600X,no,15000,amd,processors
+9,Intel Core i3-11100,no,15000,intel,processors
+10,AMD Ryzen 3 3300X,no,15000,amd,processors
+11,NVIDIA GeForce RTX 3090,no,15000,nvidia,graphicscards
+12,NVIDIA GeForce RTX 3080,no,15000,nvidia,graphicscards
+13,NVIDIA GeForce RTX 3070,no,15000,nvidia,graphicscards
+14,NVIDIA GeForce RTX 3060 Ti,no,15000,nvidia,graphicscards
+15,AMD Radeon RX 6900 XT,no,15000,amd,graphicscards
+16,AMD Radeon RX 6800 XT,no,15000,amd,graphicscards
+17,AMD Radeon RX 6700 XT,no,15000,amd,graphicscards
+18,ASUS ROG Strix Z590-E Gaming,no,45.99,asus,ram
+19,MSI MAG B550 Tomahawk,no,117.99,intel,ram
+20,Gigabyte B550 AORUS Elite,no,117.99,amd,ram
+21,ASRock B450M Steel Legend,no,97.99,intel,ram
+22,ASUS TUF Gaming B450-Plus II,no,217.99,asus,ram
+23,MSI MPG X570 GAMING PLUS,no,81.99,msi,ram
+24,Corsair Vengeance LPX 16 GB,no,127.99,corsair,ram
+25,Corsair Vengeance 32 GB,no,106.99,corsair,ram
+26,G.Skill Trident Z5 RGB 32 GB,no,114.99,gskill,ram
+27,Corsair Vengeance RGB Pro 32 GB,no,106.99,corsair,ram
+28,G.Skill Trident Z5 RGB 64 GB,no,54.99,gskill,ram
+29,Corsair Vengeance LPX 32 GB,no,106.99,corsair,ram
+30,Corsair Vengeance RGB 32 GB,no,68.98,corsair,ram
+31,TEAMGROUP T-Force Delta RGB 32 GB,no,34.97,intel,ram
+32,Corsair Vengeance 32 GB,no,134.99,corsair,ram
+33,G.Skill Flare X5 32 GB,no,112.99,gskill,ram
+34,Corsair Vengeance RGB Pro 16 GB,no,40.99,corsair,ram
+35,TEAMGROUP T-Force Delta RGB 32 GB,no,109.43,intel,ram
+36,Corsair Vengeance 16 GB,no,169.99,corsair,ram
+37,Silicon Power GAMING 16 GB,no,39.99,intel,ram
+38,Corsair Vengeance RGB 32 GB,no,69.98,corsair,ram
+39,G.Skill Trident Z5 Neo RGB 32 GB,no,106.99,gskill,ram
+40,Corsair Vengeance LPX 16 GB,no,74.98,corsair,ram

@@ -82,6 +82,17 @@ app.post('/products/category/:id', async (req, res) => {
     
 });
 
+//loading Cart
+app.get('/cart-page', async (req, res) => {
+    try{
+        const cart=await pool.query("SELECT * FROM cart");
+        res.status(200).json(cart.rows);
+    }
+    catch(err){
+        res.status(500).json({ message: "Internal Server Error" });
+    };
+});
+
 //Loading Products 
 app.get('/products/:category',async (req,res)=>{
     try {

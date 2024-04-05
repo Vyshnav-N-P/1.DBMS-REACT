@@ -11,11 +11,11 @@ function Productpage(){
 
     const mainproductlist=[
         {id: 0,name: 'PROCESSOR',imgurl: '', category:'processors',link:'/products/processors/'},
-        {id: 1,name: 'GRAPHICS CARD',imgurl: '', category:'processors', link:'/products/graphics card/'},
-        {id: 2,name: 'RAM',imgurl: '', category:'processors' ,link:'/products/rams/'},
-        {id: 3,name: 'MOTHER BOARD',imgurl: '',  category:'processors',link:'/products/motherboard/'},
-        {id: 4,name: 'MEMRORY',imgurl: '', link:'/products/memory/'},
-        {id: 5,name: 'POWER SUPPLY',imgurl: '',  category:'processors',link:'/products/power supply/'},
+        {id: 1,name: 'GRAPHICS CARD',imgurl: '', category:'graphicscards', link:'/products/graphics card/'},
+        {id: 2,name: 'RAM',imgurl: '', category:'ram' ,link:'/products/rams/'},
+        {id: 3,name: 'MOTHER BOARD',imgurl: '',  category:'motherboard',link:'/products/motherboard/'},
+        {id: 4,name: 'MEMRORY',imgurl: '',category:'ram', link:'/products/memory/'},
+        {id: 5,name: 'POWER SUPPLY',imgurl: '',  category:'power supply',link:'/products/power supply/'},
     ];
     const otherproductlist=[
         {id: 6,name: 'LIQUID COOLERS',imgurl: '', link:'/products/liquid coolers/'},
