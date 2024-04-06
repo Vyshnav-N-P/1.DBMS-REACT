@@ -37,7 +37,7 @@ export default function Cart() {
         products = <p>{error}</p>;
     } else {
         products = cartitems.map(item => (
-            <li key={item.id}><CartItem product={item} /></li>
+            <li key={item.id}><CartItem product={item} detaillink=''/></li>
         ));
     }
 

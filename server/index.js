@@ -96,11 +96,19 @@ app.get('/cart-page', async (req, res) => {
     };
 });
 
-//Loading Cart Items
-
+//Deleting Cart items
+app.delete('/cart-page', async (req, res) => {
+    try{
+        const deleteitem=await pool.query("DELETE from cart where productid=$id",[id]);
+        res.status(200).json({ message: "Product deleted from cart successfully" });
+    }
+    catch(err){
+        res.status(500).json({ message: "Internal Server Error" });
+    } 
+});
 
 //Loading Products 
-app.get('/products/:category',async (req,res)=>{
+app.get('/products/:categoryOrbrandname',async (req,res)=>{
     try {
         const products= await pool.query("SELECT * FROM products");
         

@@ -45,7 +45,7 @@ export default function categorypage(){
 
             <div className="Page-container">
                 <div className="heading">
-                    <h1 id="page-header">{category.toUpperCase()}</h1>
+                    <h1 id="page-header">{typeof category === 'string' ? category.toUpperCase() : 'Category Not Found'}</h1>
                     <p id="itemsno">{products.length} items</p>
                 </div>
                 <hr />

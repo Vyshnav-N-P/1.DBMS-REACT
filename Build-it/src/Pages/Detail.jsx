@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
 import  '../components/detail.css';
 import { useNavigate } from "react-router-dom";
+import {useLocation}  from "react-router-dom";
 import axios from "axios";
 
 export default function ProductDetail(){
@@ -12,6 +13,9 @@ export default function ProductDetail(){
     const {id}=useParams();
     const [product,setProduct] = useState([]);
     const {message,setMessage} = useState("");
+    const location=useLocation();
+    const {pathname} = location;
+   
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -31,8 +35,8 @@ export default function ProductDetail(){
     const handleSubmit = async ()=> {
 
         try {
-            const response=await axios.post(`http://localhost:5000/products/category/${id}`,JSON.stringify(qty));
-            if(response.status){
+            const response=await axios.post(`http://localhost:5000/products/category/${id}`,{qty});
+            if(response.status===200) {
                 navigate("/cart-page");
             }
             else {
