@@ -62,9 +62,10 @@ app.post("/Register-page", async(req,res)=>{
 
 //Add to cart
 
-app.post('/products/:category/:id', async (req, res) => {
+app.post('/:categoryOrBrand/:category/:id', async (req, res) => {
    try {
     const id = req.params.id;
+    
     const {qty}=req.body;
     console.log(req.body);
 
@@ -107,10 +108,21 @@ app.delete('/cart-page', async (req, res) => {
     } 
 });
 
-//Loading Products 
-app.get('/products/:categoryOrbrandname',async (req,res)=>{
+
+// Load Products based on Category or Brand
+
+app.get('/:categoryOrBrand/:name', async (req, res) => {
     try {
-        const products= await pool.query("SELECT * FROM products");
+        const { categoryOrBrand, name } = req.params;
+
+        let query = "SELECT * FROM products";
+        if (categoryOrBrand === 'products') {
+            query += ` WHERE category = '${name}'`;
+        } else if (categoryOrBrand === 'brands') {
+            query += ` WHERE brand = '${name}'`;
+        }
+
+        const products = await pool.query(query);
         
         res.status(200).json(products.rows);
     } catch (err) {
@@ -119,10 +131,11 @@ app.get('/products/:categoryOrbrandname',async (req,res)=>{
     }
 });
 
-//Load a Product
-app.get('/products/:category/:id',async (req,res)=>{
+//Load a Product in categorypage
+app.get('/:categoryOrBrand/:name/:id',async (req,res)=>{
     try {
         const id = req.params.id;
+        const{ categoryOrBrand, name } = req.params;
         const product= await pool.query("SELECT * FROM products WHERE id = $1",[id]);
         if (product.rows.length === 0) {
             res.status(404).json({message:"Product not found"});
@@ -134,6 +147,7 @@ app.get('/products/:category/:id',async (req,res)=>{
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+
 
 app.listen(5000,()=>{
     console.log("Server runnning on port 5000");

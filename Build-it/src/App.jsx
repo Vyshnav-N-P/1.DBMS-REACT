@@ -7,8 +7,8 @@ import Registerpage from './Pages/registerpage';
 import { Route,Routes } from 'react-router-dom';
 import Productpage from './Pages/Products';
 import Cart from './Pages/Cart';
-import Categoryfilter from './Pages/Categoryfilter';
 import Detail from './Pages/Detail';
+import Filtering from './Pages/Filtering';
 
 export default function App(){
   return (
@@ -19,8 +19,8 @@ export default function App(){
       <Route path='/login-page' element={<Loginpage />}/>
       <Route path='/register-page' element={<Registerpage />}/>
       <Route path='/cart-page' element={<Cart />}/>
-      <Route path='/products/:category' element={<Categoryfilter />}/>
-      <Route path='/brands/:brandname' element={<Categoryfilter />}/>
+      <Route path='/products/:category' element={<Filtering />}/>
+      <Route path='/brands/:brandname' element={<Filtering />}/>
       <Route path='/products/:category/:id' element={<Detail />}/>
       <Route path='/brands/:brandname/:id' element={<Detail />}/>
       <Route path='*' element={<NotFound />}/>
