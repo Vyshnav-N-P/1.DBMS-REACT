@@ -4,12 +4,24 @@ import Footer from '../components/Footer.jsx';
 import CartItem from '../components/cartitem.jsx';
 import axios from "axios";
 
+
 export default function Cart() {
     const [nitems, setNitems] = useState(0);
     const [cartitems, setCart] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    // const removeitem = async (productId)=>{ 
+    //     try{
+    //         const response = await axios.delete('http://localhost:5000/cart-page',{productId: product.id});
+    //         if (response.status === 200) {
+    //             console.log(response.data);
+    //             setCart(cartitems.filter(item => item.id !== productId));
+    //         }
+    //     }
+    //     catch(error){
+    //         console.error("Error fetching data", error);
+    //         }
+    //     };
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -37,7 +49,7 @@ export default function Cart() {
         products = <p>{error}</p>;
     } else {
         products = cartitems.map(item => (
-            <li key={item.id}><CartItem product={item} detaillink=''/></li>
+            <li key={item.cartid}><CartItem product={item} detaillink=''/></li>
         ));
     }
 

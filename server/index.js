@@ -73,7 +73,10 @@ app.post('/:categoryOrBrand/:category/:id', async (req, res) => {
     if (product.rows.length === 0) {
         res.status(404).json({message:"Product not found"});
     }
-    
+    const checkcart= await pool.query("SELECT * FROM cart where productid = $1 ",[id]);
+    if (checkcart.rows.length > 0) {
+        res.status(400).json({message:"Product already exists in cart"});
+    }
     await pool.query("insert into cart(productid , qty) values($1,$2)",[id,qty]);
     res.status(200).json({ message: "Product added to cart successfully" });
     }
@@ -85,7 +88,7 @@ app.post('/:categoryOrBrand/:category/:id', async (req, res) => {
 //loading Cart
 app.get('/cart-page', async (req, res) => {
     try{
-        const cartitems=await pool.query("SELECT cart.qty,products.* FROM cart INNER JOIN products ON cart.productid = products.id");
+        const cartitems=await pool.query("SELECT cart.qty,cart.cartid,products.* FROM cart INNER JOIN products ON cart.productid = products.id");
         if (cartitems.rows.length==0) {
             res.status(404).json({message:"Cart is empty"});
         };
@@ -99,14 +102,16 @@ app.get('/cart-page', async (req, res) => {
 
 //Deleting Cart items
 app.delete('/cart-page', async (req, res) => {
-    try{
-        const deleteitem=await pool.query("DELETE from cart where productid=$id",[id]);
+    const id = req.body.productId;
+    try {
+        await pool.query("DELETE FROM cart WHERE productid = $1", [id]);
         res.status(200).json({ message: "Product deleted from cart successfully" });
-    }
-    catch(err){
+    } catch (err) {
+        console.error("Error deleting item from cart:", err);
         res.status(500).json({ message: "Internal Server Error" });
-    } 
+    }
 });
+
 
 
 // Load Products based on Category or Brand

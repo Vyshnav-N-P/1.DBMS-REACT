@@ -32,10 +32,6 @@ export default function CategoryPage() {
         fetchData();
     }, [category, brandname]);
 
-    // const filteredProducts = category
-    //     ? productset.filter(product => product.category === category)
-    //     : productset.filter(product => product.brand === brandname);
-
     return (
         <div>
             <Header />
