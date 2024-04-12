@@ -4,31 +4,27 @@ import Footer from '../components/Footer.jsx';
 import CartItem from '../components/cartitem.jsx';
 import axios from "axios";
 
+import { usecartStore } from "../Store/cartStore.jsx";
+
 
 export default function Cart() {
     const [nitems, setNitems] = useState(0);
     const [cartitems, setCart] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    // const removeitem = async (productId)=>{ 
-    //     try{
-    //         const response = await axios.delete('http://localhost:5000/cart-page',{productId: product.id});
-    //         if (response.status === 200) {
-    //             console.log(response.data);
-    //             setCart(cartitems.filter(item => item.id !== productId));
-    //         }
-    //     }
-    //     catch(error){
-    //         console.error("Error fetching data", error);
-    //         }
-    //     };
+    const { cart,removefromcart,clearcart } = usecartStore((state) => ({
+        cart:state.cart,
+        removefromcart:state.removefromcart,
+        clearcart:state.clearcart
+    }));
+
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:5000/cart-page');
                 if (response.status === 200) {
-                    console.log(response.data);
                     setCart(response.data);
+                    usecartStore.setState({cart: response.data});
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -48,8 +44,8 @@ export default function Cart() {
     } else if (error) {
         products = <p>{error}</p>;
     } else {
-        products = cartitems.map(item => (
-            <li key={item.cartid}><CartItem product={item} detaillink=''/></li>
+        products = cart.map(item => (
+            <li key={item.cartid}><CartItem product={item} /></li>
         ));
     }
 
@@ -70,6 +66,7 @@ export default function Cart() {
                 <hr />
                 <div className='items-container'>
                     <ul>{products}</ul>
+                    <button onClick={clearcart}>Clear Cart</button>
                 </div>
             </div>
             <Footer />

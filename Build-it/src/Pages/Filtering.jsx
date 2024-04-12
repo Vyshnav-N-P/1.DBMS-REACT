@@ -41,6 +41,16 @@ export default function CategoryPage() {
                     <p id="itemsno">{productset.length} items</p>
                 </div>
                 <hr />
+
+                {/* <div className="filteringchoice">
+                    <select onChange={e => setFilterCategory(e.target.value)}>
+                        <option value="">Low to High</option>
+                        <option value="">High to Low</option>
+                        <option value=""></option>
+                </select>
+
+                </div> */}
+
                 <Profile list={productset} url={pathname} identifier='id' />
             </div>
             <Footer />

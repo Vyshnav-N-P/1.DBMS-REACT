@@ -25,7 +25,7 @@ export default function ProductDetail() {
                         ? `http://localhost:5000/products/category/${id}` 
                         : `http://localhost:5000/brands/brandname/${id}`
                 );
-                if (response.status === 200) {
+                if (response.status ===200) {
                     console.log(response.data);
                     setProduct(response.data);
                 }

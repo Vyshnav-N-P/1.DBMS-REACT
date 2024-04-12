@@ -145,7 +145,7 @@ app.get('/:categoryOrBrand/:name/:id',async (req,res)=>{
         if (product.rows.length === 0) {
             res.status(404).json({message:"Product not found"});
         }
-        
+            
         res.status(200).json(product.rows[0]);
     } catch (err) {
         console.error(err.message);

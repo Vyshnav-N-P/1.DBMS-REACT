@@ -2,23 +2,29 @@ import React,{useState,useEffect} from 'react';
 import "../components/cartitem.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import removeitem from '../Pages/Cart';
+import { usecartStore } from "../Store/cartStore.jsx";
 
-export default function cartitem({product,detaillink}){
+export default function cartitem({product}){
     const [qty,setQty] = useState(product.qty);
     const [price,setPrice] = useState(product.price);
+    const productlink= `/products/${product.category}/${product.id}`
+
+    const { removefromcart }=usecartStore ((state)=> ({
+        removefromcart: state.removefromcart
+    }));
 
     const handleClick =  async() => {
         try{
             const response = await axios.delete('http://localhost:5000/cart-page',{productId: product.id});
             if (response.status === 200) {
+                removefromcart(product.id);
                 console.log(response.data);
             }
         }
         catch(error){
             console.error("Error fetching data", error);
             }
-        }; //  ()=>{removeitem(product.id);}
+        };
 
     useEffect(() =>{
         if(qty===1){
@@ -39,7 +45,7 @@ export default function cartitem({product,detaillink}){
         <div>
             <div className="item-container">
                 <img src={product.image} alt="Image of the product" className='image-product'/>
-                <Link to={detaillink } ><h5>{product.name}</h5><p>details...</p> </Link>
+                <Link to={productlink} ><h5>{product.name}</h5><p>details...</p> </Link>
                 <div className='Qty-container'>
                     <p>Qty</p>
                     <button className='sub' onClick={btnsubtract}>-</button>
