@@ -14,11 +14,11 @@ export default function cartitem({product}){
     }));
 
     const handleClick =  async() => {
+        let Id=product.id;
         try{
-            const response = await axios.delete('http://localhost:5000/cart-page',{productId: product.id});
+            const response = await axios.delete('http://localhost:5000/cart-page',{data: { Id }});
             if (response.status === 200) {
                 removefromcart(product.id);
-                console.log(response.data);
             }
         }
         catch(error){

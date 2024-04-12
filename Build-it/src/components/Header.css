@@ -107,3 +107,7 @@
       border-radius: 100%;
     }
     
+    .Cart-length{
+      position: absolute;
+      transform:translateY(-10px);
+    }

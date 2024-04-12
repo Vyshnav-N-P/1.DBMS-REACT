@@ -6,6 +6,7 @@ import Profile from "../components/Profile";
 import axios from "axios";
 
 export default function CategoryPage() {
+    const [filter,setfilter]=useState('');
     const [productset, setProductset] = useState([]);
     const { category, brandname } = useParams();
     const location = useLocation();
@@ -16,9 +17,9 @@ export default function CategoryPage() {
             try {
                 let response;
                 if (category) {
-                    response = await axios.get(`http://localhost:5000/products/${category}`);
+                    response = await axios.get(`http://localhost:5000/products/${category}`,{params: {filter}});
                 } else if (brandname) {
-                    response = await axios.get(`http://localhost:5000/brands/${brandname}`);
+                    response = await axios.get(`http://localhost:5000/brands/${brandname}`,{params: {filter}});
                 }
                 if (response.status === 200) {
                     console.log(response.data);
@@ -42,14 +43,14 @@ export default function CategoryPage() {
                 </div>
                 <hr />
 
-                {/* <div className="filteringchoice">
-                    <select onChange={e => setFilterCategory(e.target.value)}>
-                        <option value="">Low to High</option>
-                        <option value="">High to Low</option>
+                <div className="filteringchoice">
+                    <select onChange={e => setfilter(e.target.value)}>
+                        <option value="lowtohigh" >Low to High</option>
+                        <option value="hightolow">High to Low</option>
                         <option value=""></option>
                 </select>
 
-                </div> */}
+                </div>
 
                 <Profile list={productset} url={pathname} identifier='id' />
             </div>

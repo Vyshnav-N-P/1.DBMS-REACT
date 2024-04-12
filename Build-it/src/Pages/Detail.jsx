@@ -6,6 +6,7 @@ import '../components/detail.css';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { usecartStore } from "../Store/cartStore";
 
 export default function ProductDetail() {
     const navigate = useNavigate();
@@ -15,6 +16,10 @@ export default function ProductDetail() {
     const [message, setMessage] = useState(""); // Corrected useState usage
     const location = useLocation();
     const { pathname } = location;
+    const {cart ,addtocart} =usecartStore((state)=>({
+        cart:state.cart,
+        addtocart:state.addtocart
+    }));
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,7 +47,8 @@ export default function ProductDetail() {
         try {
             const response = await axios.post(`http://localhost:5000/products/category/${id}`, { qty });
             if (response.status === 200) {
-                navigate("/cart-page");
+                addtocart(id);
+                // navigate("/cart-page");
             } else {
                 setMessage("Could not Add to cart, Try again later ");
             }

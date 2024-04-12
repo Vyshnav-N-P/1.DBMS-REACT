@@ -102,9 +102,14 @@ app.get('/cart-page', async (req, res) => {
 
 //Deleting Cart items
 app.delete('/cart-page', async (req, res) => {
-    const id = req.body.productId;
+    const Id = req.body.Id;
     try {
-        await pool.query("DELETE FROM cart WHERE productid = $1", [id]);
+        const deletedItem = await pool.query("SELECT * FROM cart WHERE productid = $1", [Id]);
+        if (deletedItem.rows.length === 0) {
+            return res.status(404).json({ message: "Product not found in cart" });
+        }
+        await pool.query("DELETE FROM cart WHERE productid = $1", [Id]);
+        
         res.status(200).json({ message: "Product deleted from cart successfully" });
     } catch (err) {
         console.error("Error deleting item from cart:", err);
@@ -120,13 +125,21 @@ app.get('/:categoryOrBrand/:name', async (req, res) => {
     try {
         const { categoryOrBrand, name } = req.params;
 
+        // const filter =req.query.filter;
+        // console.log(filter);
+
         let query = "SELECT * FROM products";
         if (categoryOrBrand === 'products') {
             query += ` WHERE category = '${name}'`;
         } else if (categoryOrBrand === 'brands') {
             query += ` WHERE brand = '${name}'`;
         }
-
+        // if (filter){
+        //     if(filter == 'lowtohigh')
+        //     {query += 'ORDER BY price ASC'};
+        //     elseif(filter == 'hightolow')
+        //    { query += 'ORDER BY price DESC'};
+        // };
         const products = await pool.query(query);
         
         res.status(200).json(products.rows);
