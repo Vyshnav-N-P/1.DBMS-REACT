@@ -125,8 +125,8 @@ app.get('/:categoryOrBrand/:name', async (req, res) => {
     try {
         const { categoryOrBrand, name } = req.params;
 
-        // const filter =req.query.filter;
-        // console.log(filter);
+        const filter =req.query.filter;
+        console.log(filter);
 
         let query = "SELECT * FROM products";
         if (categoryOrBrand === 'products') {
@@ -134,17 +134,37 @@ app.get('/:categoryOrBrand/:name', async (req, res) => {
         } else if (categoryOrBrand === 'brands') {
             query += ` WHERE brand = '${name}'`;
         }
-        // if (filter){
-        //     if(filter == 'lowtohigh')
-        //     {query += 'ORDER BY price ASC'};
-        //     elseif(filter == 'hightolow')
-        //    { query += 'ORDER BY price DESC'};
-        // };
+        if (filter){
+            if(filter == 'lowtohigh')
+            {query += 'ORDER BY price ASC';}
+
+            else if(filter == 'hightolow')
+           { query += 'ORDER BY price DESC';}
+        };
         const products = await pool.query(query);
         
         res.status(200).json(products.rows);
     } catch (err) {
         console.error(err.message);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+//Load products on search
+app.get('/', async (req, res) => {
+    try {
+        const search = req.query.search;
+        let query = "SELECT * FROM products WHERE name ILIKE $1";
+        const products = await pool.query(query,[`%${search}%`]);
+
+        // Return products if found
+        if (products.rows.length === 0) {
+            res.status(404).json({ message: "Products not found" });
+        } else {
+            res.status(200).json(products.rows);
+        }
+    } catch (error) {
+        // Log and handle errors
+        console.error("Error executing SQL query:", error.message);
         res.status(500).json({ message: "Internal Server Error" });
     }
 });

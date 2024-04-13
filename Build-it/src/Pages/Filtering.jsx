@@ -6,7 +6,7 @@ import Profile from "../components/Profile";
 import axios from "axios";
 
 export default function CategoryPage() {
-    const [filter,setfilter]=useState('');
+    const [filter,setfilter]=useState('hightolow');
     const [productset, setProductset] = useState([]);
     const { category, brandname } = useParams();
     const location = useLocation();
@@ -31,7 +31,7 @@ export default function CategoryPage() {
         };
 
         fetchData();
-    }, [category, brandname]);
+    }, [category, brandname,filter]);
 
     return (
         <div>
@@ -47,7 +47,7 @@ export default function CategoryPage() {
                     <select onChange={e => setfilter(e.target.value)}>
                         <option value="lowtohigh" >Low to High</option>
                         <option value="hightolow">High to Low</option>
-                        <option value=""></option>
+
                 </select>
 
                 </div>
