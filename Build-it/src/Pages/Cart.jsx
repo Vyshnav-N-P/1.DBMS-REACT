@@ -3,12 +3,13 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import CartItem from '../components/cartitem.jsx';
 import axios from "axios";
+import useAuth from "../hooks/useAuth.jsx";
 
 import { usecartStore } from "../Store/cartStore.jsx";
 
 
 export default function Cart() {
-
+    const {auth} = useAuth();
     const [cartlenth,setCartlenth] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -18,6 +19,8 @@ export default function Cart() {
         clearcart:state.clearcart
     }));
 
+    const userid=auth?.user ?.userId;
+    console.log(userid);
     // const clearing=()=>{
     //     useEffect(()=>{
     //         const deleteing=async() =>{
@@ -35,7 +38,7 @@ export default function Cart() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/cart-page');
+                const response = await axios.get(`http://localhost:5000/cart-page/${userid}`);
                 if (response.status === 200) {
 
                     setCartlenth(response.data.length);

@@ -10,23 +10,23 @@ function Productpage(){
     let {pathname} = location;
 
     const mainproductlist=[
-        {id: 0,name: 'PROCESSOR',imgurl: '', category:'processors',link:'/products/processors/'},
-        {id: 1,name: 'GRAPHICS CARD',imgurl: '', category:'graphicscards', link:'/products/graphics card/'},
-        {id: 2,name: 'RAM',imgurl: '', category:'ram' ,link:'/products/rams/'},
-        {id: 3,name: 'MOTHER BOARD',imgurl: '',  category:'motherboard',link:'/products/motherboard/'},
-        {id: 4,name: 'MEMRORY',imgurl: '',category:'ram', link:'/products/memory/'},
-        {id: 5,name: 'POWER SUPPLY',imgurl: '',  category:'power supply',link:'/products/power supply/'},
+        {id: 0,name: 'PROCESSOR',imgurl: '', category:'processors'},
+        {id: 1,name: 'GRAPHICS CARD',imgurl: '', category:'graphicscards'},
+        {id: 2,name: 'RAM',imgurl: '', category:'ram' },
+        {id: 3,name: 'MOTHER BOARD',imgurl: '',  category:'motherboard'},
+        {id: 4,name: 'MEMORY',imgurl: '',category:'ram'},
+        {id: 5,name: 'POWER SUPPLY',imgurl: '',  category:'power supply'},
     ];
     const otherproductlist=[
-        {id: 6,name: 'LIQUID COOLERS',imgurl: '', link:'/products/liquid coolers/'},
-        {id: 7,name: 'CASES',imgurl: '', link:'/products/cases'},
-        {id: 8,name: 'GAMING HEADSETS',imgurl: '', link:'/products/gaming headset/'},
-        {id: 9,name: 'KEYBOARD',imgurl: '', link:'/products/keyboard/'},
-        {id: 10,name: 'MOUSE',imgurl: '', link:'/products/mouse/'},
-        {id: 11,name: 'MONITORS',imgurl: '', link:'/products/monitors'},
-        {id: 12,name: 'GAMING CHAIRS',imgurl: '', link:'/products/gaming chairs/'},
-        {id: 13,name: 'MOUSEPAD',imgurl: '', link:'/products/mousepad/'},
-        {id: 14,name: 'CONTROLLERS',imgurl: '', link:'/products/controllers/'}
+        {id: 6,name: 'LIQUID COOLERS',imgurl: '',category:'liquidcoolers'},
+        {id: 7,name: 'CASES',imgurl: '',category:'cases'},
+        {id: 8,name: 'GAMING HEADSETS',imgurl: '',category:'headsets'},
+        {id: 9,name: 'KEYBOARD',imgurl: '',category:'keyboard'},
+        {id: 10,name: 'MOUSE',imgurl: '',category:'mouse'},
+        {id: 11,name: 'MONITORS',imgurl: '',category:'monitors'},
+        {id: 12,name: 'GAMING CHAIRS',imgurl: '',category:'liquidcoolers'},
+        {id: 13,name: 'MOUSEPAD',imgurl: '',category:'mousepad'},
+        {id: 14,name: 'CONTROLLERS',imgurl: '',category:'liquidcoolers'}
     ];
     const products=<Profile list={mainproductlist} url={pathname} identifier='category' />
     const otherproducts=<Profile list={otherproductlist} url={pathname} identifier='category'/>

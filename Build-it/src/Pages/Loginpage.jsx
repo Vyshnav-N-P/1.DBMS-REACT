@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import '../components/loginpage.css';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 function Loginpage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
+    const {auth, setAuth}=useAuth();
     const Navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -20,11 +22,16 @@ function Loginpage() {
                 body: JSON.stringify({ username, password })
             });
             const data = await response.json();
+            const accessToken = data.accessToken
+            const user = data.user
             
             if (!response.ok) {
                 throw new Error('Login failed');
             }
             setMessage(data.message);
+            
+            console.log(data);
+            setAuth({accessToken, user});
             Navigate("/")
         } catch (err) {
             console.error('Error:', err);

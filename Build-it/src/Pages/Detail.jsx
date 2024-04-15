@@ -7,9 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { usecartStore } from "../Store/cartStore";
+import useAuth from "../hooks/useAuth";
 
 export default function ProductDetail() {
     const navigate = useNavigate();
+    const {auth} = useAuth();
+    const userid = auth?.user?.userId;
     const [qty, setQty] = useState(1);
     const { id } = useParams();
     const [product, setProduct] = useState([]);
@@ -45,7 +48,7 @@ export default function ProductDetail() {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post(`http://localhost:5000/products/category/${id}`, { qty });
+            const response = await axios.post(`http://localhost:5000/products/category/${id}`, { qty , userid });
             if (response.status === 200) {
                 addtocart(id);
                 // navigate("/cart-page");
@@ -80,7 +83,8 @@ export default function ProductDetail() {
                             <p className='qty'>{qty}</p>
                             <button className='add' onClick={() => { setQty(qty => qty + 1); }}>+</button>
                         </div>
-                        <button type="submit" id="tocart" onClick={handleSubmit}>ADD TO CART</button>
+                        
+                        <button type="submit" id="tocart" onClick={()=>{auth?.user ? handleSubmit: navigate('/login-page')}}>ADD TO CART</button>
                     </div>
                     <p>{message}</p>
                 </div>
