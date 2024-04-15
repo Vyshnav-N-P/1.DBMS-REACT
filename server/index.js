@@ -91,9 +91,9 @@ app.get('/cart-page', async (req, res) => {
         const cartitems=await pool.query("SELECT cart.qty,cart.cartid,products.* FROM cart INNER JOIN products ON cart.productid = products.id");
         if (cartitems.rows.length==0) {
             res.status(404).json({message:"Cart is empty"});
-        };
-        console.log(cartitems.rows);
-        res.status(200).json(cartitems.rows);
+        }
+        else{console.log(cartitems.rows);
+        res.status(200).json(cartitems.rows);}
     }
     catch(err){
         res.status(500).json({ message: "Internal Server Error" });

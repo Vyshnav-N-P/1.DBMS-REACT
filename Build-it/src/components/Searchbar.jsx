@@ -7,7 +7,7 @@ export default function Searchbar() {
     const [search, setSearch] = useState('');
     const [product, setProduct] = useState([]);
     const [showMenu, setShowMenu] = useState(false); // State to control menu visibility
-    // https://jsonplaceholder.typicode.com/users
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
