@@ -40,3 +40,10 @@
     top: 50%;
     transform: translate(50%, -50%);
 }
+.dropdown-menu{
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    border-radius:40px ;
+    z-index: 1;
+}

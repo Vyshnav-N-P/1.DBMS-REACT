@@ -8,11 +8,13 @@ export default function Profile({ list ,url,identifier}) {
       {list.map((item) => (
         <Link to={`${url}/${item[identifier]}`} className="linking" key={item.id}>
           <div className="brand-profile">
-            <img src={item.imgurl} alt={`Image of the ${item.name}`} />
+            <img src={item.imageurl} alt={`Image of the ${item.name}`} />            
+          </div>
+          <div className="profilenamecontainer">
             <p>
               <strong>{item.name}</strong>
             </p>
-          </div>
+            </div>
         </Link>
       ))}
     </div>

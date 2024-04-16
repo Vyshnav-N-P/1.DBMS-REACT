@@ -4,12 +4,15 @@ import Footer from '../components/Footer.jsx';
 import CartItem from '../components/cartitem.jsx';
 import axios from "axios";
 import useAuth from "../hooks/useAuth.jsx";
+import "../components/cart.css"
 
 import { usecartStore } from "../Store/cartStore.jsx";
 
 
 export default function Cart() {
     const {auth} = useAuth();
+    const [totalprice,settotalprice]= useState(0);
+    const [quantity,setQuantity]=useState(0);
     const [cartlenth,setCartlenth] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -67,10 +70,17 @@ export default function Cart() {
         ));
     }
 
-    
 
     useEffect(() => {
         setCartlenth(cart.length);
+        let totalprice=0;
+        let quantity =0;
+        cart.forEach(item => {
+            totalprice += parseInt(item.price)*parseInt(item.qty);
+            quantity += item.qty;
+        });
+        settotalprice(totalprice);
+        setQuantity(quantity);
     }, [cart]);
 
     return (
@@ -85,6 +95,14 @@ export default function Cart() {
                 <div className='items-container'>
                     <ul>{products}</ul>
                     <button onClick={clearcart}>Clear Cart</button>
+                </div>
+            </div>
+            <div>
+                <div className="total-header"><h3>CART TOTALS</h3></div>
+                <div className="carttotal-details">
+                    <p>NUMBERS : {quantity}</p>
+                    <p>TOTAL : {totalprice}</p>
+                    <div className="buttonwrapper"><button className="checkout-button">PROCEED TO CHECKOUT</button></div>
                 </div>
             </div>
             <Footer />

@@ -27,15 +27,22 @@
       align-items:normal;
     }
     .Logo-container {
-      border-radius: 100%;
-      background-color: #F9B5B5;
+      background-color: white;
       overflow: hidden;
       align-items: center;
+      width:fit-content;
+      height: 60px;
+      transform: translateX(60px);
+
     }
-    
+    .Logo-container img:hover{
+      background-color:transparent;
+    }
+
     .Logo-container img {
-      object-fit: cover;
+      object-fit:cover;
       align-self: center;
+      width: 100px;
       max-width: 100%;
       max-height: 100%;
     }
@@ -63,18 +70,22 @@
     width: 100%;
     list-style-type: none;
     display: flex;
+    justify-content: center;
 
     }
     .main-nav-content{
+      width: 90%;
       font-family: 'inter';
       list-style-type: none;
       display: flex;
-      transform: translateX(110px);
       gap: 70px;
-      justify-content:space-around;
+      justify-content:space-between;
     }
-    
-    .topnavbar a
+    link{
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .topnavbar a,.userProfile button
     {
       color: black;
       font-size: 22px;
@@ -88,7 +99,7 @@
       margin: 10px;
       text-decoration: none;
     }
-    .topnavbar a:hover {
+    .topnavbar .cartbutton:hover {
       background-color: #FFF0CA;
       border-radius: 20px;
     }
@@ -111,3 +122,19 @@
       position: absolute;
       transform:translateY(-10px);
     }
+    .logout{
+      position:absolute;
+      top: 60px;
+      right: 150px;
+      font-size: larger;
+    }
+    .userProfile .userpro{
+      transform: translateX(-40px);
+    }
+
+    .userProfile .logout{
+      transform: translate(-20px,20px);
+    }
+    .userProfile .userpro:hover{
+      border-radius: 20px;
+    background-color: #FFF0CA;}

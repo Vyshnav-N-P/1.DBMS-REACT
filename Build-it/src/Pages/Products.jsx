@@ -10,23 +10,22 @@ function Productpage(){
     let {pathname} = location;
 
     const mainproductlist=[
-        {id: 0,name: 'PROCESSOR',imgurl: '', category:'processors'},
-        {id: 1,name: 'GRAPHICS CARD',imgurl: '', category:'graphicscards'},
-        {id: 2,name: 'RAM',imgurl: '', category:'ram' },
-        {id: 3,name: 'MOTHER BOARD',imgurl: '',  category:'motherboard'},
-        {id: 4,name: 'MEMORY',imgurl: '',category:'ram'},
-        {id: 5,name: 'POWER SUPPLY',imgurl: '',  category:'power supply'},
+        {id: 0,name: 'PROCESSOR',imageurl: '', category:'PROCESSOR'},
+        {id: 1,name: 'GRAPHICS CARD',imageurl: '', category:'GRAPHICS'},
+        {id: 2,name: 'RAM',imageurl: '', category:'MEMORY' },
+        {id: 3,name: 'MOTHER BOARD',imageurl: '',  category:'MOTHERBOARD'},
+        {id: 4,name: 'SSD',imageurl: '',category:'STORAGE'},
+        {id: 5,name: 'POWER SUPPLY',imageurl: '',  category:'PSU'},
     ];
     const otherproductlist=[
-        {id: 6,name: 'LIQUID COOLERS',imgurl: '',category:'liquidcoolers'},
-        {id: 7,name: 'CASES',imgurl: '',category:'cases'},
-        {id: 8,name: 'GAMING HEADSETS',imgurl: '',category:'headsets'},
-        {id: 9,name: 'KEYBOARD',imgurl: '',category:'keyboard'},
-        {id: 10,name: 'MOUSE',imgurl: '',category:'mouse'},
-        {id: 11,name: 'MONITORS',imgurl: '',category:'monitors'},
-        {id: 12,name: 'GAMING CHAIRS',imgurl: '',category:'liquidcoolers'},
-        {id: 13,name: 'MOUSEPAD',imgurl: '',category:'mousepad'},
-        {id: 14,name: 'CONTROLLERS',imgurl: '',category:'liquidcoolers'}
+        {id: 6,name: 'LIQUID COOLERS',imageurl: '',category:'COOLING'},
+        {id: 7,name: 'CASES',imageurl: '',category:'CASE'},
+        {id: 8,name: 'GAMING HEADSETS',imageurl: '',category:'HEADPHONE'},
+        {id: 9,name: 'KEYBOARD',imageurl: '',category:'KEYBOARD'},
+        {id: 10,name: 'MOUSE',imageurl: '',category:'MOUSE'},
+        {id: 11,name: 'MONITORS',imageurl: '',category:'MONITOR'},
+        {id: 12,name:'SPEAKER',imageurl: '',category:'SPEAKER'},
+        {id: 13,name:'UPS',imageurl: '',category:'UPS'}
     ];
     const products=<Profile list={mainproductlist} url={pathname} identifier='category' />
     const otherproducts=<Profile list={otherproductlist} url={pathname} identifier='category'/>

@@ -19,6 +19,7 @@ export default function ProductDetail() {
     const [message, setMessage] = useState(""); // Corrected useState usage
     const location = useLocation();
     const { pathname } = location;
+    const addedprice=200 + product.price;
     const {cart ,addtocart} =usecartStore((state)=>({
         cart:state.cart,
         addtocart:state.addtocart
@@ -49,6 +50,7 @@ export default function ProductDetail() {
     const handleSubmit = async () => {
         try {
             const response = await axios.post(`http://localhost:5000/products/category/${id}`, { qty , userid });
+            console.log(response);
             if (response.status === 200) {
                 addtocart(id);
                 // navigate("/cart-page");
@@ -65,17 +67,19 @@ export default function ProductDetail() {
             <Header />
             <div className="Maincontainer">
                 <div className="imagecontainer">
-                    <img src="" alt="" />
+                    <img src={product.imageurl} alt="" />
                 </div>
                 <div className="detailscontainer">
                     <div>
                         <h1>{product.name}</h1>
-                        <div className="pricecontainer"><p className="fprice">{product.price + 200}</p><p className="oprice">{product.price}</p></div>
+                        <div className="pricecontainer"><p className="fprice">{addedprice}</p><p className="oprice">₹ {product.price}</p></div>
 
                     </div>
 
                     <div className="details">
-
+                        <hr />
+                        <p>{product.DETAILS}</p>
+                       
                     </div>
                     <div className="Cartfuntions">
                         <div className="Qtycontainer">
@@ -84,7 +88,7 @@ export default function ProductDetail() {
                             <button className='add' onClick={() => { setQty(qty => qty + 1); }}>+</button>
                         </div>
                         
-                        <button type="submit" id="tocart" onClick={()=>{auth?.user ? handleSubmit: navigate('/login-page')}}>ADD TO CART</button>
+                        <button type="button" id="tocart" onClick={()=>{auth?.user ? handleSubmit() : navigate('/login-page')}}>ADD TO CART</button>
                     </div>
                     <p>{message}</p>
                 </div>

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
 import { usecartStore } from "../Store/cartStore";
 import useAuth from "../hooks/useAuth";
+import logo from  "C:/Users/vyshn/OneDrive/Pictures/logo.png"
 
 function Header() {
   const { auth, setAuth } = useAuth();
@@ -15,7 +16,7 @@ function Header() {
   useEffect(() => {
     // Update cart length dynamically whenever cart changes
     setCartLength(cart.length);
-  }, [cart]); // Include cart in dependency array
+  }, [cart,]); // Include cart in dependency array
   const handlelogout = () => {
     setAuth(null);
     navigate("/");
@@ -25,14 +26,14 @@ function Header() {
       <div className="topnavbar">
         <div className="Logo-container">
           <Link to="/" className="hlinking">
-            <img src="" alt="LOGO" />
+            <img src={logo} alt="LOGO" />
           </Link>
         </div>
         <Searchbar />
         <div className="top-nav-right">
           {auth?.user ? (
             <div className="userProfile">
-              <button
+              <button className="userpro"
                 type="button"
                 onClick={() => {
                   setShowdropdown(!showdropdown);
@@ -40,10 +41,10 @@ function Header() {
               >
                 {auth.user.username}
               </button>
-              <div className="logout">
+              <div className="logoutcontainer">
                 {showdropdown && (
                   <div>
-                    <button onClick={handlelogout}>LOG OUT</button>
+                    <button className='logout' onClick={handlelogout}>LOG OUT</button>
                   </div>
                 )}
               </div>
@@ -56,7 +57,7 @@ function Header() {
           <>
             {auth?.user ? (
               <>
-                <Link to={`/cart-page/${auth?.user?.userId}`}>Cart</Link>
+                <Link to={`/cart-page/${auth?.user?.userId}`} className="cartbutton">Cart</Link>
                 <p className="Cart-length">{cartLength}</p>
               </>
             ) : (
@@ -67,11 +68,11 @@ function Header() {
       </div>
       <div className="main-nav">
         <div className="main-nav-content">
-          {/* <a href="#HOME">PRE BUILD</a> */}
+         
           <Link to="/brands">BRANDS</Link>
           <Link to="/products">CATEGORIES</Link>
           <Link to="/products">BUILD</Link>
-          {/* <a href="news.html">NEW</a> */}
+    
         </div>
       </div>
     </div>
