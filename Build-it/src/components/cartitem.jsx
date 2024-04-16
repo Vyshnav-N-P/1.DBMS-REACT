@@ -9,11 +9,13 @@ export default function cartitem({product}){
     const [price,setPrice] = useState(product.price);
     const productlink= `/products/${product.category}/${product.id}`
 
-    const { removefromcart,qtysetter }=usecartStore((state) => ({
+    const { removefromcart,qtysetter,cart }=usecartStore((state) => ({
         removefromcart: state.removefromcart,
-        qtysetter:state.qtysetter
+        qtysetter:state.qtysetter,
+        cart:state.cart
     }));
-
+    
+    
     const handleClick =  async() => {
         let Id=product.id;
         try{
@@ -45,7 +47,7 @@ export default function cartitem({product}){
     return (
         <div>
             <div className="item-container">
-                <img src={product.image} alt="Image of the product" className='image-product'/>
+                <img src={product.imageurl} alt="Image of the product" className='image-product'/>
                 <Link to={productlink} ><h5>{product.name}</h5> </Link>
                 <div className='Qty-container'>
                     <p>Qty</p>
@@ -54,7 +56,7 @@ export default function cartitem({product}){
                     <button className='add' onClick={()=>{setQty(qty=>qty+1);qtysetter(product.id,qty)}}>+</button>
                 </div>
                 <p className='price'>₹ {price}</p>
-                <button className='delete' onClick={handleClick}>X</button>
+                <button className='delete' onClick={handleClick}><i class="fa-solid fa-xmark"></i></button>
             </div>
         </div>
     )

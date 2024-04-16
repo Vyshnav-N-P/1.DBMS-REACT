@@ -9,6 +9,7 @@ import Productpage from './Pages/Products';
 import Cart from './Pages/Cart';
 import Detail from './Pages/Detail';
 import Filtering from './Pages/Filtering';
+import Checkout from './Pages/checkout';
 
 export default function App(){  
   return (
@@ -18,6 +19,7 @@ export default function App(){
       <Route path='/products' element={<Productpage /> }/>
       <Route path='/login-page' element={<Loginpage />}/>
       <Route path='/register-page' element={<Registerpage />}/>
+      <Route path='/cart-page/checkout' element={<Checkout />}/>
       <Route path='/cart-page/:id' element={<Cart />}/>
       <Route path='/products/:category' element={<Filtering />}/>
       <Route path='/brands/:brandname' element={<Filtering />}/>

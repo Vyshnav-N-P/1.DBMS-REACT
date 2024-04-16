@@ -5,6 +5,7 @@ import CartItem from '../components/cartitem.jsx';
 import axios from "axios";
 import useAuth from "../hooks/useAuth.jsx";
 import "../components/cart.css"
+import { Link } from "react-router-dom";
 
 import { usecartStore } from "../Store/cartStore.jsx";
 
@@ -91,10 +92,10 @@ export default function Cart() {
                     <h1 id="page-header">CART</h1>
                     <p id="itemsno">{cartlenth} items</p>
                 </div>
-                <hr />
+                <hr className="line"/>
                 <div className='items-container'>
                     <ul>{products}</ul>
-                    <button onClick={clearcart}>Clear Cart</button>
+                    {/* <button onClick={clearcart}>Clear Cart</button> */}
                 </div>
             </div>
             <div>
@@ -102,7 +103,9 @@ export default function Cart() {
                 <div className="carttotal-details">
                     <p>NUMBERS : {quantity}</p>
                     <p>TOTAL : {totalprice}</p>
-                    <div className="buttonwrapper"><button className="checkout-button">PROCEED TO CHECKOUT</button></div>
+                    <div className="buttonwrapper">
+                        <Link to='/cart-page/checkout'><button className="checkout-button">PROCEED TO CHECKOUT</button></Link>
+                        </div>
                 </div>
             </div>
             <Footer />

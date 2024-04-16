@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useParams, useLocation } from "react-router-dom";
 import Profile from "../components/Profile";
+import '../components/filteringchoice.css';
 import axios from "axios";
 
 export default function CategoryPage() {
@@ -41,13 +42,12 @@ export default function CategoryPage() {
                     <h1 id="page-header">{category ? category.toUpperCase() : brandname ? brandname.toUpperCase() : 'Not Found'}</h1>
                     <p id="itemsno">{productset.length} items</p>
                 </div>
-                <hr />
+                <hr className="linedesign"/>
 
                 <div className="filteringchoice">
                     <select onChange={e => setfilter(e.target.value)}>
-                        <option value="lowtohigh" >Low to High</option>
                         <option value="hightolow">High to Low</option>
-
+                        <option value="lowtohigh" >Low to High</option>
                 </select>
 
                 </div>

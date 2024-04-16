@@ -1,5 +1,6 @@
 import React from "react";
 import "../components/Footer.css";
+import {Link} from 'react-router-dom';
 
 function Footer(){
     return(
@@ -12,10 +13,10 @@ function Footer(){
       </div>
       <div className="fnav">
         <ul>
-          <li><a href="#HOME">Home</a></li>
+          <li><Link to="/">Home</Link></li>
           <li><a href="#HOME">About</a></li>
-          <li><a href="#HOME">Contact Us</a></li>
-          <li><a href="#HOME">Our Team</a></li>
+          <li><a href="#HOME" onClick={()=>{alert("Email us your queries in one of the following mails .\nvyshnav.potti@christuniversity.in\nrohit.b@christuniversity.in\namal.k@christuniversity.in\nnandagopal.b@christuniversity.in")}}>Contact Us</a></li>
+          <li><a href="#HOME" onClick={()=>{alert("Vyshnav \nRohit \nNandu \nAmal")}}>Our Team</a></li>
         </ul>
       </div>
       <div className="fbottom">

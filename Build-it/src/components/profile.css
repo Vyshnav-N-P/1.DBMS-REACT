@@ -1,12 +1,17 @@
 .heading {
     display: flex;
+    transform: translateX(80px);
     gap: 20px;
 }
 #page-header{
     padding-left: 50px;
     font-size: 64px;
 }
+.linedesign{
+    width: 95%;
+    background-color: rgb(97, 93, 93);
 
+}
 #itemsno{
     transform: translateY(69px);
 }
@@ -56,16 +61,15 @@ hr{
     transform: translateY(-40px);
     background-color: #000;
     width: 212px;
-    border-bottom-left-radius: 30%;
-    border-bottom-right-radius: 30%;
+    border-radius: 0 0 30px 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
 .profilenamecontainer p{
    color: white;
-    
+   align-self: center;
 }
 
 .linking{

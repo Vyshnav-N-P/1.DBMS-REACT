@@ -19,7 +19,7 @@ export default function ProductDetail() {
     const [message, setMessage] = useState(""); // Corrected useState usage
     const location = useLocation();
     const { pathname } = location;
-    const addedprice=200 + product.price;
+    const addedprice=parseFloat(200) +parseInt( product.price);
     const {cart ,addtocart} =usecartStore((state)=>({
         cart:state.cart,
         addtocart:state.addtocart
@@ -65,6 +65,7 @@ export default function ProductDetail() {
     return (
         <div>
             <Header />
+            <hr className="mainline"/>
             <div className="Maincontainer">
                 <div className="imagecontainer">
                     <img src={product.imageurl} alt="" />
@@ -72,14 +73,14 @@ export default function ProductDetail() {
                 <div className="detailscontainer">
                     <div>
                         <h1>{product.name}</h1>
-                        <div className="pricecontainer"><p className="fprice">{addedprice}</p><p className="oprice">₹ {product.price}</p></div>
+                        <div className="pricecontainer"><p className="fprice">₹ {parseInt(addedprice)}</p><p className="oprice">₹ {parseInt(product.price)}</p></div>
 
                     </div>
 
                     <div className="details">
                         <hr />
-                        <p>{product.DETAILS}</p>
-                       
+                        <p className="productdetails">{product.DETAILS}</p>
+                        <hr />
                     </div>
                     <div className="Cartfuntions">
                         <div className="Qtycontainer">
@@ -87,7 +88,6 @@ export default function ProductDetail() {
                             <p className='qty'>{qty}</p>
                             <button className='add' onClick={() => { setQty(qty => qty + 1); }}>+</button>
                         </div>
-                        
                         <button type="button" id="tocart" onClick={()=>{auth?.user ? handleSubmit() : navigate('/login-page')}}>ADD TO CART</button>
                     </div>
                     <p>{message}</p>

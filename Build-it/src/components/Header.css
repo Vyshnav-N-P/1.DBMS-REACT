@@ -133,7 +133,7 @@
     }
 
     .userProfile .logout{
-      transform: translate(-20px,20px);
+      transform: translate(-20px,60px);
     }
     .userProfile .userpro:hover{
       border-radius: 20px;

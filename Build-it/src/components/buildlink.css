@@ -13,10 +13,13 @@
   }
 
   .textelement {
-    padding: 10px 0px 10px 0px;
-    font-size:96px;
+    padding: 0px 0px 0px 0px;
+    font-size:90px;
     font-style: normal;
     font-family:'newreader';
+  }
+  #heading2{
+    transform: translateY(-50px);
   }
   a{
     text-decoration: none;
@@ -28,7 +31,8 @@
   }
   .buildbtn{
     padding: 10px;
-    margin: 20px;
+    transform: translateY(-50px);
+    margin: 0px 20px 20px 20px;
     width: 150px;
     color: #111;
     text-decoration: none;

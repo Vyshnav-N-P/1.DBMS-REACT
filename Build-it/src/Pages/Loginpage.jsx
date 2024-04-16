@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import '../components/loginpage.css';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import logo from  "C:/Users/vyshn/OneDrive/Pictures/logo.png";
 
 function Loginpage() {
     const [username, setUsername] = useState('');
@@ -41,13 +42,18 @@ function Loginpage() {
 
     return (
         <div className='container'>
+            <div className='imageContainer'>
+                <img src={logo} alt="logo" />
+            </div>
+            <div className='DetailingContainer'>
             <form onSubmit={handleSubmit} className='formcontainer'>
+                <h1>SIGN IN</h1>
                 <div className='component'>
-                    <label htmlFor="username"><i className="fa-solid fa-envelope"></i></label>
+                    <label htmlFor="username"><strong>USERNAME</strong></label>
                     <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Username" id="username" name='username' required />
                 </div>
                 <div className='component'>
-                    <label htmlFor="password"><i className="fa-solid fa-lock"></i></label>
+                    <label htmlFor="password"><strong>PASSWORD</strong></label>
                     <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" id="password" name='password' required />
                 </div>
                 <button type='submit' id='loginbtn'>Log In</button>
@@ -59,6 +65,8 @@ function Loginpage() {
             <button type='button' id='signupbtn'>Sign Up</button>
             </Link>
 
+            </div>
+          
         </div>
     );
 }

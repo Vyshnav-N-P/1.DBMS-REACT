@@ -1,19 +1,19 @@
 
 
 .container{
-    position: absolute;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    justify-content: space-evenly;
     border-radius: 29px;
-    background: rgba(0, 0, 0, 0.07);
     border-radius: 10%;
     padding: 20px;
-   
+   width: 100%;
+}
+.DetailingContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .formcontainer{
     display: flex;
@@ -24,7 +24,20 @@
 }
 
 .component{
-    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+.component input{
+    margin-top: 15px;
+    width: 300px;
+    height: 50px;
+    border-radius: 5;
+    border:1px solid rgba(0, 0, 0, 0.3);
+}
+strong {
+    font-size: 20px;
+    font-weight: 600;
 }
 
 i{
@@ -41,8 +54,11 @@ input{
 }
 
 #loginbtn,#signupbtn{
-    margin-top:10px;
-    color: #000;
+    margin-top:15px;
+    width: 200px;
+    height: 30px;
+    color: white;
+    background-color: black;
     text-align: center;
     font-family: Inter;
     font-size: 15px;
@@ -50,7 +66,6 @@ input{
     font-weight: 400;
     line-height: normal;
     border-radius: 20px;
-    background-color:#FFFFFF;
 }
 .error{
     color:red;
@@ -59,7 +74,7 @@ input{
 #loginbtn:hover , #signupbtn:hover{
     cursor: pointer;
     color: black;
-    background: rgba(0, 0, 0, 0.001);
+    background: rgb(228, 228, 228);
 }
 
 .linking{

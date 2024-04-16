@@ -37,7 +37,7 @@ function Productpage(){
                 <h1 id="page-header">PRODUCTS</h1>
                 <p id="itemsno">6 items</p>
             </div>
-            <hr />
+            <hr className="linedesign"/>
             <div className='Profiles-container'>
                 {products}
             </div>
@@ -45,7 +45,7 @@ function Productpage(){
                 <h1 id="page-header">OTHER PRODUCTS</h1>
                 <p id="itemsno">9 items</p>
             </div>
-            <hr />
+            <hr className="linedesign"/>
             <div className='Profiles-container'>
                 {otherproducts}
             </div>

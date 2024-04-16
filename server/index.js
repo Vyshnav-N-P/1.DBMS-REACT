@@ -245,6 +245,16 @@ app.get("/:categoryOrBrand/:name/:id", async (req, res) => {
   }
 });
 
+//checkout
+app.post( '/cart-page/checkout',async(req, res)=>{
+  try{
+    const formdata=req.body.formData;
+    await pool.query("INSERT into Order");
+  }catch(err){
+    console.log(err);
+  }
+});
+
 app.listen(5000, () => {
   console.log("Server runnning on port 5000");
 });

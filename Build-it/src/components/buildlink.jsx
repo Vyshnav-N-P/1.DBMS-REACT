@@ -10,10 +10,8 @@ export default function Buildlink() {
         <p id="heading2">BUILD YOUR OWN PC ?</p>
       </div>
       <div className="btncontainer">
-        <Link to="/products">
-          <a id="buildbtn" className="buildbtn">
+        <Link to="/products" className="buildbtn">
             BUILD
-          </a>
         </Link>
       </div>
     </div>
