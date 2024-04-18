@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import '../components/checkoutform.css';
 import Header from '../components/Header';
+import { usecartStore } from '../Store/cartStore';
 const CheckoutForm = () => {
+  const [totalprice,settotalprice]= useState(0);
+  const [quantity,setQuantity]=useState(0);
+  const [cartlenth,setCartlenth] = useState(0);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -13,14 +17,18 @@ const CheckoutForm = () => {
         state: '',
         country: '',
       });
-    
+      const { cart,removefromcart,clearcart } = usecartStore((state) => ({
+        cart:state.cart,
+        removefromcart:state.removefromcart,
+        clearcart:state.clearcart
+    }));
       const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
     
       const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        console.log(formData);
         try {
           const response = await axios.post('http://localhost:5000/cart-page/checkout', formData);
           console.log(response.data); // Handle successful response
@@ -28,7 +36,18 @@ const CheckoutForm = () => {
           console.error(error); // Handle error
         }
       };
-
+      useEffect(() => {
+        setCartlenth(cart.length);
+        let totalprice=0;
+        let quantity =0;
+        cart.forEach(item => {
+            totalprice += parseInt(item.price)*parseInt(item.qty);
+            quantity += item.qty;
+        });
+        settotalprice(totalprice);
+        setQuantity(quantity);
+    }, [cart]);
+   
   return (
     <> 
     <Header />
@@ -111,15 +130,16 @@ const CheckoutForm = () => {
       </label>
       <button type="submit" className='checkout-button'>PROCEED TO PAY</button>
       </div>
+  
     </form>
     <div className="cart-summary">
         <h3 className='cartsumm'>CART SUMMARY</h3>
         <hr className='checkoutline' />    
-        <p>ITEMS: 3</p>
-        <p>PRICE: $100</p>
-        <p>TAX: $10</p>
-        <p>DISCOUNT: $5</p>
-        <p>PAYABLE: $105</p>
+        <p>ITEMS: {quantity}</p>
+        <p>PRICE:₹ {totalprice+200*quantity} </p>
+        <p>TAX:₹ 500</p>
+        <p>DISCOUNT:₹ {200*quantity}</p>
+        <p>PAYABLE:₹ {totalprice+500}</p>
        
       </div>
       

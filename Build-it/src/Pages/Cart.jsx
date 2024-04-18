@@ -102,7 +102,7 @@ export default function Cart() {
                 <div className="total-header"><h3>CART TOTALS</h3></div>
                 <div className="carttotal-details">
                     <p>NUMBERS : {quantity}</p>
-                    <p>TOTAL : {totalprice}</p>
+                    <p>TOTAL :₹ {totalprice}</p>
                     <div className="buttonwrapper">
                         <Link to='/cart-page/checkout'><button className="checkout-button">PROCEED TO CHECKOUT</button></Link>
                         </div>
